@@ -1,0 +1,9 @@
+name = "cltech-api"
+main = "src/worker.js"
+compatibility_date = "2026-06-20"
+
+# Exemplo de binding mTLS.
+# O certificate_id é criado após subir o certificado no Cloudflare.
+# mtls_certificates = [
+#   { binding = "EFI_CERT", certificate_id = "COLE_O_CERTIFICATE_ID_AQUI" }
+# ]

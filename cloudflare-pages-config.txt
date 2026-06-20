@@ -1,0 +1,4 @@
+Framework preset: None
+Build command: deixe vazio
+Build output directory: pages
+Root directory: /

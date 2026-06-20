@@ -1,0 +1,9 @@
+{
+  "name": "CLTECH Studio",
+  "short_name": "CLTECH",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060914",
+  "theme_color": "#38bdf8",
+  "icons": []
+}

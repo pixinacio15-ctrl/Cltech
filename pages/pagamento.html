@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Pagamento Pix — CLTECH Studio</title>
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/button-themes.css">
+  <link rel="stylesheet" href="/assets/catalog-pix.css">
+</head>
+<body onload="PixPay.renderPaymentPage()"><div id="pixi-bg" aria-hidden="true"></div>
+  <div class="top-sale-bar">Pagamento Pix — CLTECH Studio</div>
+
+  <header class="store-header">
+    <div class="store-header-inner">
+      <a class="store-logo" href="/">
+        <span class="store-logo-mark">CL</span>
+        <span>CLTECH <span style="color:#38bdf8">Studio</span></span>
+      </a>
+      <div></div>
+      <div class="store-actions">
+        <a class="btn btn-outline" href="/">Voltar</a>
+        <a class="btn btn-whatsapp" href="https://wa.me/5511951289502">WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="checkout-layout">
+    <section class="payment-card">
+      <span class="badge">Serviço selecionado</span>
+      <h1 id="payServiceName">Serviço CLTECH</h1>
+      <p id="payServiceDesc" class="muted">Serviço selecionado para contratação.</p>
+      <div id="payServicePrice" class="payment-price">R$ 0,00</div>
+
+      <div class="pay-steps">
+        <div class="pay-step"><b>1.</b> Copie o Pix Efí.</div>
+        <div class="pay-step"><b>2.</b> Pague no app do banco.</div>
+        <div class="pay-step"><b>3.</b> Envie o comprovante pelo WhatsApp.</div>
+        <div class="pay-step"><b>4.</b> Crie a conta para registrar e acompanhar o pedido.</div>
+      </div>
+
+      <br>
+      <div class="btn-row">
+        <a id="registerOrderLink" class="btn btn-cyber btn-shine" href="/login.html">Registrar pedido</a>
+        <a id="waProofLink" class="btn btn-whatsapp" target="_blank" rel="noopener">Enviar comprovante</a>
+      </div>
+    </section>
+
+    <aside class="pix-box">
+      <h2>Pix Efí</h2>
+      <p class="muted">A cobrança será criada direto na API Pix Efí. Use o QR Code ou copie o código abaixo.</p>
+      <div id="efiStatus" class="efi-status">Preparando Pix Efí...</div><div id="efiQrBox"></div><p id="efiTxid" class="muted"></p><textarea id="pixPayload" class="pix-copy" readonly></textarea>
+      <br><br>
+      <button id="copyPixBtn" class="btn btn-pix btn-shine btn-block" onclick="PixPay.copyPix()">Copiar Pix</button>
+      <br><br>
+      <p class="muted">Cobrança emitida via API Pix Efí • Chave: <b>+55 11 95128-9502</b></p>
+    </aside>
+  </main>
+
+  <script src="https://pixijs.download/release/pixi.min.js"></script><script src="/assets/pixi-background.js"></script><script src="/assets/config.js"></script>
+  <script src="/assets/services.js"></script>
+  <script src="/assets/pix-payment.js"></script>
+</body>
+</html>

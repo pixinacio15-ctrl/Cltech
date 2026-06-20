@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CLTECH Studio — Sites, Sistemas e Automações</title>
+  <meta name="description" content="Contrate sites, sistemas, banco de dados, painéis, Google Sheets, WhatsApp Bot e automações com pagamento via Pix.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/button-themes.css">
+  <link rel="stylesheet" href="/assets/catalog-pix.css">
+</head>
+<body><div id="pixi-bg" aria-hidden="true"></div>
+  <div class="top-sale-bar">Sites, sistemas e automações para microempresas — contratação rápida com Pix</div>
+
+  <header class="store-header">
+    <div class="store-header-inner">
+      <a class="store-logo" href="/">
+        <span class="store-logo-mark">CL</span>
+        <span>CLTECH <span style="color:#38bdf8">Studio</span></span>
+      </a>
+
+      <form class="search-shell" onsubmit="event.preventDefault();CLTECH.loadServices('#servicesList')">
+        <input id="productSearch" type="search" placeholder="Pesquisar serviço">
+        <button>Pesquisar</button>
+      </form>
+
+      <div class="store-actions">
+        <a class="btn btn-glass" href="/pagamento.html?service=combo-cltech-inicial">Pix</a>
+        <a class="btn btn-outline" href="/login.html">Entrar</a>
+        <a class="btn btn-cltech btn-shine" href="/admin.html">Admin</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-shop">
+    <div class="hero-banner">
+      <div>
+        <span class="badge">Entrega organizada • Atendimento via WhatsApp • Pagamento Pix</span>
+        <h1>Contrate sites e sistemas prontos para vender.</h1>
+        <p>Escolha o serviço, veja o valor, gere o Pix e envie o comprovante. A CLTECH Studio cria páginas, bancos, painéis, automações e bots para pequenos negócios.</p>
+        <div class="btn-row">
+          <a class="btn btn-cltech btn-shine btn-lg" href="#servicos">Ver serviços</a>
+          <a class="btn btn-whatsapp btn-lg" href="https://wa.me/5511951289502">Falar no WhatsApp</a>
+        </div>
+      </div>
+
+      <div class="hero-card-stack">
+        <div class="mini-proof"><b>Pagamento rápido</b><p class="muted">Pix copia e cola exibido logo após escolher o serviço.</p></div>
+        <div class="mini-proof"><b>Pedido acompanhado</b><p class="muted">Área do cliente com pedidos, tickets e status.</p></div>
+        <div class="mini-proof"><b>Painel administrativo</b><p class="muted">Controle de clientes, funcionários, vendas e notificações.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category-grid">
+    <a class="category-card" href="#servicos"><strong>Sites</strong><span class="muted">Landing pages e institucionais</span></a>
+    <a class="category-card" href="#servicos"><strong>Sistemas</strong><span class="muted">Login, painel e área cliente</span></a>
+    <a class="category-card" href="#servicos"><strong>Banco de Dados</strong><span class="muted">Supabase, tabelas e admin</span></a>
+    <a class="category-card" href="#servicos"><strong>Automações</strong><span class="muted">Sheets, Workers e WhatsApp</span></a>
+  </section>
+
+  <section id="servicos" class="store-section">
+    <div class="store-section-head">
+      <div>
+        <h2>Serviços em destaque</h2>
+        <p class="muted">Escolha, pague via Pix e envie o comprovante.</p>
+      </div>
+      <a class="btn btn-cyber" href="/login.html">Criar conta</a>
+    </div>
+
+    <div id="servicesList" class="catalog-grid"></div>
+  </section>
+
+  <footer class="footer">
+    <h3>CLTECH Studio</h3>
+    <p>Sites, sistemas, bancos de dados, painéis administrativos, Google Sheets, Cloudflare, Supabase e bots de WhatsApp.</p>
+    <p>Políticas • Termos de serviço • Atendimento via WhatsApp</p>
+  </footer>
+
+  <script src="https://pixijs.download/release/pixi.min.js"></script><script src="/assets/pixi-background.js"></script><script src="/assets/config.js"></script>
+  <script src="/assets/services.js"></script>
+  <script src="/assets/pix-payment.js"></script>
+  <script src="/assets/app.js"></script>
+  <script>
+    async function renderCatalog(){
+      const el = document.querySelector("#servicesList");
+      const q = (document.querySelector("#productSearch")?.value || "").toLowerCase().trim();
+      let services = window.CLTECH_SERVICES || [];
+      try {
+        const headers = {
+          apikey: window.CLTECH_CONFIG.SUPABASE_PUBLISHABLE_KEY,
+          Authorization: "Bearer " + window.CLTECH_CONFIG.SUPABASE_PUBLISHABLE_KEY
+        };
+        const r = await fetch(window.CLTECH_CONFIG.SUPABASE_URL + "/rest/v1/services?active=eq.true&select=*&order=sort_order.asc", {headers});
+        if (r.ok) services = await r.json();
+      } catch(e) {}
+      if (q) {
+        services = services.filter(s => (s.title + " " + s.description + " " + s.category).toLowerCase().includes(q));
+      }
+      el.innerHTML = services.map(s => `
+        <article class="product-card">
+          <div class="product-art">⚡</div>
+          <div class="product-body">
+            <span class="badge">${s.category || "serviço"}</span>
+            <h3>${s.title}</h3>
+            <p class="product-desc">${s.description || ""}</p>
+            <div class="product-price">
+              <b>${PixPay.brl(s.price_cents)}</b>
+              <small class="muted">${s.delivery_days || 7} dia(s)</small>
+            </div>
+            <div class="btn-row">
+              <a class="btn btn-pix btn-shine" href="/pagamento.html?service=${encodeURIComponent(s.slug)}">Contratar e pagar</a>
+              <a class="btn btn-outline" href="/login.html?service=${encodeURIComponent(s.slug)}">Registrar pedido</a>
+            </div>
+          </div>
+        </article>
+      `).join("");
+    }
+    renderCatalog();
+    document.querySelector("#productSearch")?.addEventListener("input", renderCatalog);
+  </script>
+</body>
+</html>

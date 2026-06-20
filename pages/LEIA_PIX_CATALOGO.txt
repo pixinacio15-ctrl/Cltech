@@ -1,0 +1,20 @@
+CLTECH — versão catálogo + Pix
+
+Alterações prontas:
+- Página inicial em estilo catálogo/loja de serviços.
+- Busca de serviços.
+- Botão "Contratar e pagar" em cada serviço.
+- Página pagamento.html com Pix copia e cola automático.
+- Depois de criar pedido na área do cliente, o usuário é levado para o pagamento Pix.
+- Chave Pix configurada como +55 11 95128-9502 em assets/config.js.
+- Botão para enviar comprovante pelo WhatsApp.
+
+Arquivo para publicar no Cloudflare Pages:
+ARRASTE_ESTE_ZIP_NO_CLOUDFLARE_PAGES_PIX_CATALOGO.zip
+
+Observação:
+Se a chave Pix correta não for o telefone +55 11 95128-9502, edite apenas:
+assets/config.js
+PIX_KEY
+PIX_MERCHANT_NAME
+PIX_MERCHANT_CITY

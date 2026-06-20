@@ -1,0 +1,13 @@
+COMANDOS PARA SUBIR NO GITHUB
+
+git init
+git add .
+git commit -m "CLTECH Studio com PixiJS e Pix Efi"
+git branch -M main
+git remote add origin https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git
+git push -u origin main
+
+Cloudflare Pages:
+Framework preset: None
+Build command: vazio
+Build output directory: pages
