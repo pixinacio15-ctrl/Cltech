@@ -1,0 +1,71 @@
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurora Transfer Manager — CLTECH Studio</title>
+<link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/button-themes.css"><link rel="stylesheet" href="/assets/catalog-pix.css">
+</head><body><div id="pixi-bg" aria-hidden="true"></div>
+<div class="top-sale-bar">Aurora Transfer Manager — banco, Efí, planilhas, estoque, visitas, aprovações e relatórios</div>
+<header class="store-header"><div class="store-header-inner">
+<a class="store-logo" href="/"><img class="aurora-logo-img" src="/assets/logo-cltech-aurora.svg" alt="CLTECH Studio"></a>
+<form class="search-shell"><input placeholder="Buscar serviço, conta, visita ou suporte"><button type="button">Buscar</button></form>
+<div class="store-actions"><a class="btn btn-outline" href="/">Início</a><a class="btn btn-admin" href="/admin-aurora.html">Admin Aurora</a></div>
+</div><a class="btn btn-purple" style="position:fixed;right:14px;bottom:88px;z-index:80" href="/aurora-mobile.html">Aurora Mobile</a></header>
+
+<section class="section-shell">
+  <div id="newsCarousel" class="carousel">
+    <div class="carousel-track">
+      <article class="carousel-slide"><div><span class="badge">Novidade</span><h1>Aurora gerencia todo o fluxo do site.</h1><p class="muted">Pedidos, Pix Efí, banco, planilhas, callbacks, visitas e aprovações com código do dono.</p><a class="btn btn-cltech btn-shine" href="/admin-aurora.html">Abrir painel Aurora</a></div><img src="/assets/illustrations/aurora-dashboard.svg" alt="Painel Aurora"></article>
+      <article class="carousel-slide"><div><span class="badge">Estoque automático</span><h1>Contas entregues pela planilha.</h1><p class="muted">Quando o cliente compra uma conta, a Aurora busca no estoque da planilha. Sem estoque, envia o pedido ao WhatsApp do admin.</p><a class="btn btn-pix btn-shine" href="#contas">Ver contas</a></div><img src="/assets/illustrations/contas-digitais.svg" alt="Contas digitais"></article>
+      <article class="carousel-slide"><div><span class="badge">São Paulo</span><h1>Agendamento de manutenção presencial.</h1><p class="muted">Clientes de São Paulo podem solicitar visita para manutenção de computadores e notebooks.</p><a class="btn btn-whatsapp" href="#visitas">Agendar visita</a></div><img src="/assets/illustrations/manutencao-sp.svg" alt="Manutenção em São Paulo"></article>
+    </div>
+    <div class="carousel-controls"><button data-prev>‹</button><button data-next>›</button></div>
+  </div>
+</section>
+
+<section class="section-shell">
+  <div class="section-title"><div><h2>Seções profissionais</h2><p class="muted">O site fica organizado por áreas de venda, suporte e gestão.</p></div></div>
+  <div class="aurora-grid">
+    <div class="icon-card"><img src="/assets/icons/database.svg"><h3>Banco e Efí</h3><p class="muted">Transferências, cobranças, callbacks e registros persistentes.</p></div>
+    <div class="icon-card"><img src="/assets/icons/account.svg"><h3>Contas e estoque</h3><p class="muted">Entrega por planilha com fallback para WhatsApp.</p></div>
+    <div class="icon-card"><img src="/assets/icons/calendar.svg"><h3>Visitas SP</h3><p class="muted">Agendamento para manutenção presencial em São Paulo.</p></div>
+    <div class="icon-card"><img src="/assets/icons/approval.svg"><h3>Aprovação do dono</h3><p class="muted">Alterações de admin exigem código de confirmação.</p></div>
+  </div>
+</section>
+
+<section id="contas" class="section-shell">
+  <div class="section-title"><div><h2>Contas e itens digitais</h2><p class="muted">Produtos organizados por seção com entrega controlada via estoque.</p></div></div>
+  <div id="accountProducts" class="catalog-grid"></div>
+</section>
+
+<section id="visitas" class="section-shell">
+  <div class="grid grid-2">
+    <div class="card"><h2>Agendar visita em São Paulo</h2><p class="muted">Manutenção de computadores e notebooks com registro no painel admin.</p>
+      <form class="form" onsubmit="Aurora.scheduleVisit(event)">
+        <div class="field"><label>Nome</label><input name="name" required></div>
+        <div class="field"><label>WhatsApp</label><input name="phone" required></div>
+        <div class="field"><label>Bairro em São Paulo</label><input name="district" required></div>
+        <div class="field"><label>Endereço</label><input name="address" required></div>
+        <div class="grid grid-2"><div class="field"><label>Data</label><input name="date" type="date" required></div><div class="field"><label>Período</label><select name="period"><option>Manhã</option><option>Tarde</option><option>Noite</option></select></div></div>
+        <div class="field"><label>Problema</label><textarea name="problem" required></textarea></div>
+        <button class="btn btn-cltech btn-shine">Solicitar visita</button><p id="visitMsg" class="msg ok"></p>
+      </form>
+    </div>
+    <div class="card"><img src="/assets/illustrations/manutencao-sp.svg" style="width:100%;border-radius:20px"><h3>Atendimento organizado</h3><p class="muted">O pedido gera código, entra na planilha, aparece no painel e pode ser aprovado pelo dono.</p></div>
+  </div>
+</section>
+
+<section class="section-shell">
+  <div class="grid grid-2">
+    <div class="card"><h2>Atendimento guiado</h2><p class="muted">O cliente escolhe o problema por sessão e a Aurora monta o relatório.</p><div id="problemGrid" class="problem-grid"></div><div id="guidedAnswers" style="margin-top:14px"></div></div>
+    <div class="card"><h2>Aurora IA</h2><div id="chatBox" class="chat-box"><div class="chat-msg">Aurora ativa. Informe o que precisa resolver.</div></div><br><div class="search-shell"><input id="aiInput" placeholder="Digite sua dúvida"><button onclick="Aurora.aiSend()" type="button">Enviar</button></div></div>
+  </div>
+</section>
+
+<section class="section-shell">
+  <div class="section-title"><div><h2>Gráficos reais e persistentes</h2><p class="muted">Acessos, pedidos, pagamentos e tickets são enviados para o Worker e exibidos no painel.</p></div></div>
+  <div id="auroraChart" class="graph-card"></div>
+</section>
+
+<footer class="footer"><h3>CLTECH Studio — Aurora Transfer Manager</h3><p>Gestão profissional de banco, Efí, planilhas, callbacks, visitas, contas digitais, aprovação do dono e relatórios.</p></footer>
+<script src="https://pixijs.download/release/pixi.min.js"></script><script src="/assets/pixi-background.js"></script>
+<script src="/assets/config.js"></script><script src="/assets/services.js"></script><script src="/assets/app.js"></script><script src="/assets/aurora.js"></script><script src="/assets/aurora-charts.js"></script>
+</body></html>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" role="img" aria-label="CLTECH Studio">
+<defs>
+  <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#38bdf8"/><stop offset=".55" stop-color="#7c3aed"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+</defs>
+<rect width="900" height="260" rx="46" fill="#060914"/>
+<path d="M58 130c0-49 38-88 90-88h72l-34 38h-38c-29 0-51 21-51 50s22 50 51 50h48l-31 38h-17c-52 0-90-39-90-88z" fill="url(#g)" filter="url(#glow)"/>
+<path d="M234 42h49v135h91l-32 41H234V42z" fill="#e0f2fe"/>
+<path d="M405 69h154v39h-55v110h-45V108h-54V69zM586 69h137v38h-93v18h84v35h-84v20h96v38H586V69z" fill="#e5e7eb"/>
+<path d="M752 69h45v54h52V69h45v149h-45v-56h-52v56h-45V69z" fill="url(#g)"/>
+<text x="405" y="244" fill="#94a3b8" font-size="28" font-family="Arial,Helvetica,sans-serif" font-weight="700">Studio • Aurora Transfer Manager</text>
+</svg>

@@ -1,0 +1,49 @@
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Aurora Mobile — CLTECH Studio</title>
+<link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/button-themes.css"><link rel="stylesheet" href="/assets/catalog-pix.css">
+</head><body class="mobile-aurora"><div id="pixi-bg" aria-hidden="true"></div>
+<header class="mobile-top"><div class="mobile-brand"><img src="/assets/logo-cltech-aurora.svg" alt="CLTECH"><span>Aurora Mobile</span></div></header>
+<main class="mobile-shell">
+<section class="mobile-card mascot-row">
+  <div><span class="badge">Autônoma</span><h1>Aurora no celular</h1><p class="muted">Controle banco, planilha, Efí, visitas, contas, aprovações e relatórios pelo painel mobile.</p></div>
+  <div class="mascot-card"><img src="/assets/anime/aurora-operator.svg" alt="Aurora Operator"></div>
+</section>
+
+<section id="mHome" class="mobile-panel active">
+  <div class="mobile-card"><h2>Ações rápidas</h2>
+    <div class="mobile-grid">
+      <a class="mobile-action" href="/aurora.html#contas"><img src="/assets/icons/account.svg"><strong>Contas</strong><span class="muted">Estoque e entrega</span></a>
+      <a class="mobile-action" href="/aurora.html#visitas"><img src="/assets/icons/calendar.svg"><strong>Visitas SP</strong><span class="muted">Manutenção</span></a>
+      <a class="mobile-action" href="/admin-aurora.html"><img src="/assets/icons/approval.svg"><strong>Aprovação</strong><span class="muted">Código do dono</span></a>
+      <a class="mobile-action" href="/pagamento.html?service=combo-cltech-pix-pro"><img src="/assets/icons/efi.svg"><strong>Pix Efí</strong><span class="muted">Cobrança real</span></a>
+    </div>
+  </div>
+  <div class="mobile-card"><h2>Gráfico PixiJS</h2><div id="auroraChart" class="graph-card"></div></div>
+</section>
+
+<section id="mAssist" class="mobile-panel">
+  <div class="mobile-card"><div class="mascot-card"><img src="/assets/anime/aurora-support.svg" alt="Aurora Support"></div><h2>Atendimento guiado</h2><div id="problemGrid" class="problem-grid"></div><div id="guidedAnswers"></div></div>
+  <div class="mobile-card"><h2>Aurora IA</h2><div id="chatBox" class="chat-box"><div class="chat-msg">Aurora pronta para atender.</div></div><br><div class="search-shell"><input id="aiInput" placeholder="Mensagem para Aurora"><button onclick="Aurora.aiSend()" type="button">Enviar</button></div></div>
+</section>
+
+<section id="mFinance" class="mobile-panel">
+  <div class="mobile-card mascot-row"><div><h2>Financeiro</h2><p class="muted">Pagamentos, Efí, callbacks e relatórios.</p><a class="btn btn-pix btn-block" href="/pagamento.html?service=combo-cltech-pix-pro">Gerar Pix</a></div><div class="mascot-card"><img src="/assets/anime/aurora-finance.svg" alt="Aurora Finance"></div></div>
+</section>
+
+<section id="mCode" class="mobile-panel">
+  <div class="mobile-card"><h2>Relatório por código</h2><form class="form" onsubmit="Aurora.reportByCode(event)"><div class="field"><label>Código</label><input name="code" required></div><button class="btn btn-cyber">Buscar</button></form><pre id="codeReport" class="card" style="white-space:pre-wrap;margin-top:12px"></pre></div>
+</section>
+<div class="mobile-spacer"></div>
+</main>
+<nav class="bottom-nav">
+<button onclick="mobilePanel('mHome')"><img src="/assets/icons/aurora.svg">Início</button>
+<button onclick="mobilePanel('mAssist')"><img src="/assets/icons/chat.svg">Chat</button>
+<button onclick="mobilePanel('mFinance')"><img src="/assets/icons/efi.svg">Efí</button>
+<button onclick="mobilePanel('mCode')"><img src="/assets/icons/database.svg">Código</button>
+<button onclick="location.href='/admin-aurora.html'"><img src="/assets/icons/approval.svg">Admin</button>
+</nav>
+<script>function mobilePanel(id){document.querySelectorAll('.mobile-panel').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active')}</script>
+<script src="https://pixijs.download/release/pixi.min.js"></script><script src="/assets/pixi-background.js"></script>
+<script src="/assets/config.js"></script><script src="/assets/services.js"></script><script src="/assets/app.js"></script><script src="/assets/aurora.js"></script><script src="/assets/aurora-charts.js"></script>
+</body></html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520">
+    <defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#020617"/><stop offset="1" stop-color="#2dd4bf"/></linearGradient></defs>
+    <rect width="900" height="520" rx="36" fill="url(#b)"/>
+    <circle cx="370" cy="180" r="92" fill="#2dd4bf" opacity=".16"/>
+    <path d="M90 390 C220 250 330 470 470 320 S690 160 820 260" fill="none" stroke="#e0f2fe" stroke-width="5" opacity=".38"/>
+    <rect x="530" y="90" width="250" height="300" rx="26" fill="#060914" opacity=".72" stroke="#e0f2fe" stroke-opacity=".18"/>
+    <rect x="570" y="135" width="170" height="22" rx="11" fill="#2dd4bf"/>
+    <rect x="570" y="185" width="130" height="14" rx="7" fill="#e0f2fe" opacity=".65"/>
+    <rect x="570" y="220" width="155" height="14" rx="7" fill="#e0f2fe" opacity=".45"/>
+    <rect x="570" y="255" width="105" height="14" rx="7" fill="#e0f2fe" opacity=".35"/>
+    <text x="70" y="92" fill="#fff" font-size="40" font-family="Arial" font-weight="800">Pix Efí integrado</text>
+    <text x="70" y="142" fill="#cbd5e1" font-size="20" font-family="Arial">CLTECH Studio</text>
+    </svg>

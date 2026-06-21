@@ -1,0 +1,43 @@
+<!doctype html><html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin Aurora — CLTECH Studio</title>
+<link rel="stylesheet" href="/assets/style.css"><link rel="stylesheet" href="/assets/button-themes.css"><link rel="stylesheet" href="/assets/catalog-pix.css">
+</head><body onload="loadAdmin && loadAdmin()"><div id="pixi-bg" aria-hidden="true"></div>
+<header class="store-header"><div class="store-header-inner">
+<a class="store-logo" href="/"><img class="aurora-logo-img" src="/assets/logo-cltech-aurora.svg" alt="CLTECH Studio"></a>
+<div></div><div class="store-actions"><a class="btn btn-outline" href="/aurora.html">Aurora</a><a class="btn btn-outline" href="/admin.html">Admin</a></div>
+</div><a class="btn btn-purple" style="position:fixed;right:14px;bottom:88px;z-index:80" href="/aurora-mobile.html">Aurora Mobile</a></header>
+<main class="app-shell">
+<aside class="card side"><h2>Aurora Admin</h2><p class="muted">Controle total com aprovação do dono.</p><nav class="side-nav">
+<button class="btn btn-cyber" onclick="showPanel('#aprovacao')">Aprovação</button>
+<button class="btn btn-outline" onclick="showPanel('#relatorio')">Relatório por código</button>
+<button class="btn btn-outline" onclick="showPanel('#planilha')">Planilha de alteração</button>
+<button class="btn btn-outline" onclick="showPanel('#graficos')">Gráficos</button>
+</nav></aside>
+<section>
+<div id="aprovacao" class="panel active">
+  <div class="grid grid-2">
+    <div class="card"><h2>Solicitar alteração</h2><p class="muted">Admin solicita alteração; o dono confirma com código.</p>
+      <form class="form" onsubmit="Aurora.ownerApprovalRequest(event)">
+        <div class="field"><label>Área</label><select name="area"><option>Serviços</option><option>Preços</option><option>Contas</option><option>Pix Efí</option><option>Agendamentos</option><option>Visual do site</option></select></div>
+        <div class="field"><label>Alteração desejada</label><textarea name="change" required></textarea></div>
+        <div class="field"><label>Admin solicitante</label><input name="admin_name" required></div>
+        <button class="btn btn-admin">Gerar código para o dono</button><p id="approvalMsg" class="msg ok"></p>
+      </form>
+    </div>
+    <div class="card"><h2>Confirmar código do dono</h2>
+      <form class="form" onsubmit="Aurora.confirmOwnerCode(event)">
+        <div class="field"><label>Código</label><input name="code" required></div>
+        <div class="field"><label>Observação do dono</label><textarea name="owner_note"></textarea></div>
+        <button class="btn btn-success">Confirmar alteração</button><p id="approvalConfirmMsg" class="msg ok"></p>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="relatorio" class="panel"><div class="card"><h2>Relatório por código</h2><form class="form" onsubmit="Aurora.reportByCode(event)"><div class="field"><label>Código do pedido/sessão</label><input name="code" required></div><button class="btn btn-cyber">Buscar relatório</button></form><pre id="codeReport" class="card" style="white-space:pre-wrap;margin-top:14px"></pre></div></div>
+<div id="planilha" class="panel"><div class="card"><h2>Planilha de alteração</h2><p class="muted">Use a aba Alteracoes no Google Sheets. Ao marcar APROVAR, o callback envia a mudança para o Worker e exige confirmação do dono quando necessário.</p><div class="table-wrap"><table><thead><tr><th>Aba</th><th>Função</th><th>Status</th></tr></thead><tbody><tr><td>Alteracoes</td><td>Fila de mudanças</td><td>ativa</td></tr><tr><td>Callback</td><td>Retorno do Worker</td><td>ativo</td></tr><tr><td>Contas_Estoque</td><td>Estoque de contas</td><td>ativo</td></tr><tr><td>Codigos_Confirmacao</td><td>Códigos do dono</td><td>ativo</td></tr></tbody></table></div></div></div>
+<div id="graficos" class="panel"><div class="card"><h2>Gráficos PixiJS</h2><div id="auroraChart" class="graph-card"></div></div></div>
+</section></main>
+<script src="https://pixijs.download/release/pixi.min.js"></script><script src="/assets/pixi-background.js"></script>
+<script src="/assets/config.js"></script><script src="/assets/services.js"></script><script src="/assets/app.js"></script><script src="/assets/admin.js"></script><script src="/assets/aurora.js"></script><script src="/assets/aurora-charts.js"></script>
+</body></html>
